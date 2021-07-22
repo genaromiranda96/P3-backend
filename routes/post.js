@@ -1,33 +1,36 @@
 const express = require('express');
 const { checkIfLoggedIn } = require('../middlewares');
-const Post = require('../models/User');
+const Post = require('../models/Post');
 const router = express.Router();
 
-//Create and save a post for do sport in group
+//Create and save a post for do sport in group OK
 router.post('/', checkIfLoggedIn, async (req, res, next) => {
-	const { sport, location, hour, day, year } = req.body;
+  const { sport, location, hour, day, year } = req.body;
+  console.log('req.session.currentUser', req.session.currentUser)
 	try {
 		const post = await Post.create({ 
-      author: req.session.currentUser,
+      author: req.session.currentUser._id,
       sport,
       location, 
       hour,
       day,
       year,
-  });
+    }
+  )
+  console.log('post', post)
 		return res.json({create: post});
 	} catch (error) {
 		return next(error);
 	}
 });
 
-//Show all post created 
+//Show all post created OK
 router.get('/', checkIfLoggedIn, async (req, res) => {
   const allPost = await Post.find();
   res.json({ found: allPost})
 });
 
-//Show Post by ID
+//Show Post by ID OK
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   try {

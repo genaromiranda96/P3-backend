@@ -12,7 +12,6 @@ const postSchema = new Schema(
     hour: {type: Number},
     day: {type: String},
     year: {type: Number},
-    comments: [{type: Schema.Types.ObjectId, ref:'Comments'}]
 	},
 	{
 		timestamps: {
