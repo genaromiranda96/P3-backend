@@ -9,11 +9,9 @@ const postSchema = new Schema(
      "Camping", "Rollerblading", "Kite Surfing"
      , "Snowboarding", "Walking", "Trekking", "Boxing"]},
     location: { type: String },
-    date: {
-      hour: {type: Number},
-      day: {type: String},
-      year: {type: Number},
-    },
+    hour: {type: Number},
+    day: {type: String},
+    year: {type: Number},
     comments: [{type: Schema.Types.ObjectId, ref:'Comments'}]
 	},
 	{
