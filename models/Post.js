@@ -5,9 +5,8 @@ const { Schema } = mongoose;
 const postSchema = new Schema(
 	{
     author: { type: Schema.Types.ObjectId, ref: "User" },
-		sport:  { type: String, enum: ["Run", "Football", "Biking", "Skateboarding",
-     "Camping", "Rollerblading", "Kite Surfing"
-     , "Snowboarding", "Walking", "Trekking", "Boxing"]},
+		sport:  { type: String, enum: ["Running", "Football", "Biking", "Skateboarding",
+    	 "Rollerblading", "Snowboarding", "Walking", "Trekking", "Boxing"]},
     location: { type: String },
     hour: {type: Number},
     day: {type: String},
