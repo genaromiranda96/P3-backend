@@ -44,7 +44,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //Find and update by ID
-router.put('/:id/edit', checkIfLoggedIn, async (req, res) => {
+router.put('/:id', checkIfLoggedIn, async (req, res) => {
   const { sport, location, hour, day, year } = req.body;
   const { id } = req.params;
 
