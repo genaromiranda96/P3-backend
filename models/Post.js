@@ -7,10 +7,10 @@ const postSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "User" },
 		sport:  { type: String, enum: ["Running", "Football", "Biking", "Skateboarding",
     	 "Rollerblading", "Snowboarding", "Walking", "Trekking", "Boxing"]},
-    location: { type: String },
+    city: { type: String },
+		address: { type: String },
+		date: {type: String},
     hour: {type: Number},
-    day: {type: String},
-    year: {type: Number},
 	},
 	{
 		timestamps: {

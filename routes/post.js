@@ -5,16 +5,16 @@ const router = express.Router();
 
 //Create and save a post for do sport in group OK
 router.post('/', checkIfLoggedIn, async (req, res, next) => {
-  const { sport, location, hour, day, year } = req.body;
+  const { sport, city, address, date, hour } = req.body;
   console.log('req.session.currentUser', req.session.currentUser)
 	try {
 		const post = await Post.create({ 
       author: req.session.currentUser._id,
       sport,
-      location, 
+      city, 
+      address,
+      date,
       hour,
-      day,
-      year,
     }
   )
   console.log('post', post)
@@ -26,7 +26,7 @@ router.post('/', checkIfLoggedIn, async (req, res, next) => {
 
 //Show all post created OK
 router.get('/', checkIfLoggedIn, async (req, res) => {
-  const allPost = await Post.find();
+  const allPost = await Post.find({ author: req.session.currentUser._id });
   res.json({ found: allPost})
 });
 
@@ -45,11 +45,11 @@ router.get('/:id', async (req, res, next) => {
 
 //Find and update by ID
 router.put('/:id', checkIfLoggedIn, async (req, res) => {
-  const { sport, location, hour, day, year } = req.body;
+  const { sport, city, address, date, hour } = req.body;
   const { id } = req.params;
 
   const postUpdate = await Post.findByIdAndUpdate(id, 
-    {sport, location, hour, day, year}, { new: true })
+    {sport, city, address, date, hour}, { new: true })
     res.json({ updated: postUpdate});
 });
 
