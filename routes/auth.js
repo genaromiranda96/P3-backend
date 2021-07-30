@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const createError = require('http-errors');
+// const Post = require('../models/Post');
 
 const { checkUsernameAndPasswordNotEmpty } = require('../middlewares');
 
@@ -9,6 +10,7 @@ const User = require('../models/User');
 const bcryptSalt = 10;
 
 const router = express.Router();
+
 
 router.get('/whoami', (req, res, next) => {
 	if (req.session.currentUser) {
