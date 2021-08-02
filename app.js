@@ -12,6 +12,7 @@ require('dotenv').config();
 const authRouter = require('./routes/auth');
 const demoRouter = require('./routes/demo');
 const postRouter = require('./routes/post');
+const meetRouter = require('./routes/meet');
 
 
 async function setupApp() {
@@ -46,6 +47,9 @@ async function setupApp() {
 	app.use('/', authRouter);
 	app.use('/protected', demoRouter);
 	app.use('/mypost', postRouter);
+	app.use('/meet', meetRouter);
+
+
 
 
 	// catch 404 and forward to error handler
